@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Categorías · UniMarket</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">UNIMARKET</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html">Explorar</a></li>
+          <li><a href="categorias.html" class="active">Categorías</a></li>
+          <li><a href="#">Cómo funciona</a></li>
+          <li><a href="#">Quiénes somos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+        <button class="btn btn--outline" id="buyBtn">Publicar producto</button>
+        <button class="cart" id="cartBtn" aria-label="Mensajes">
+          💬 <span class="cart__count" id="cartCount">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ENCABEZADO DE LA PÁGINA -->
+    <section class="hero hero--small">
+      <div class="container">
+        <h1 class="hero__title">Categorías</h1>
+        <p class="hero__text">
+          Encuentra justo lo que necesitas, organizado por tipo.
+        </p>
+      </div>
+    </section>
+
+    <!-- GRID DE CATEGORÍAS -->
+    <section class="features features--categorias container" id="categoriasGrid">
+      <!-- Las tarjetas se generan con script.js a partir de categorias.js -->
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="categorias.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniMarket</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">UNIMARKET</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#">Explorar</a></li>
+          <li><a href="categorias.html">Categorías</a></li>
+          <li><a href="#">Cómo funciona</a></li>
+          <li><a href="#">Quiénes somos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+        <button class="btn btn--outline" id="buyBtn">Publicar producto</button>
+        <button class="cart" id="cartBtn" aria-label="Mensajes">
+          💬 <span class="cart__count" id="cartCount">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero__title">Compra y vende<br><span>entre estudiantes, sin salir del campus.</span></h1>
+        <p class="hero__text">
+          <strong>UniMarket</strong> es la plataforma exclusiva para la comunidad de la
+          Institución Universitaria de Colombia. Publica en minutos, contacta directo con otro
+          estudiante y olvídate de los grupos de WhatsApp desordenados.
+          Verificado con correo institucional. Bienvenido a <strong>UniMarket</strong>.
+        </p>
+        <a href="#" class="btn btn--teal">Explorar productos</a>
+      </div>
+    </section>
+<script src='https://cdn.jotfor.ms/agent/embedjs/01a0d3b0888870008fe02b8f7c049cedd430/embed.js'>
+</script>
+    <!-- TARJETAS -->
+    <section class="features container">
+      <article class="card">
+        <div class="card__icon">💻</div>
+        <h2>Tecnología</h2>
+        <p>Encuentra <strong>calculadoras, portátiles y accesorios</strong> a buen precio, publicados
+          por otros estudiantes de la Universitaria de Colombia.</p>
+        <a href="#" class="btn btn--outline">Ver tecnología</a>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">🧮</div>
+        <h2>Calculadora</h2>
+        <p><strong>UniMarket</strong> incluye una sección de calculadoras científicas y financieras
+          de segunda mano, ideales para materias de cálculo, física y contabilidad.</p>
+        <a href="#" class="btn btn--outline">Ver calculadoras</a>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">📚</div>
+        <h2>Libros</h2>
+        <p><strong>UniMarket</strong> reúne libros de texto y guías de estudio por semestre y
+          carrera, para que no pagues precio de librería.</p>
+        <a href="#" class="btn btn--outline">Ver libros</a>
+      </article>
+    </section>
+
+    <!-- BANDA OSCURA -->
+    <section class="container">
+      <div class="banner">
+        <div>
+          <h2>Comprar y vender <span>nunca fue tan fácil</span></h2>
+          <p><strong>UniMarket</strong> es la forma nueva de moverte dentro del campus. Sin
+            intermediarios, sin comisiones ocultas, sin salir de la universidad. Publica lo que
+            ya no usas o encuentra justo lo que necesitas para este semestre.</p>
+        </div>
+        <a href="#" class="btn btn--teal">Cómo funciona</a>
+      </div>
+    </section>
+
+    <!-- PUBLICADOS RECIENTEMENTE (las tarjetas se generan con JavaScript) -->
+    <section class="blog container">
+      <p class="blog__intro">Explora los productos y servicios publicados recientemente por
+        estudiantes de Libros, Tecnología, Ropa, Dormitorio y Servicios.</p>
+      <div class="blog__grid" id="blogGrid"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
