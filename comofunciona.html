@@ -3,45 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cómo funciona</title>
+<title>Cómo funciona — UNIMARKET</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+  :root {
+    --tinto: #C8262A;
+    --oro: #F2B90C;
+    --azul: #1E5FA8;
+    --borde: #E7E2D6;
+    --texto-suave: #5A5952;
+  }
+  .cf-bloque { padding: 56px clamp(20px, 4vw, 56px); max-width: 980px; margin: 0 auto; }
+  .cf-bloque + .cf-bloque { padding-top: 0; }
+  .cf-bloque h2 {
+    font-family: 'Sora', sans-serif; font-weight: 700; font-size: 24px;
+    margin: 0 0 8px; color: var(--tinto);
+  }
+  .cf-bloque p.cf-sub { font-size: 14px; color: var(--texto-suave); margin: 0 0 28px; max-width: 640px; }
+
+  .cf-pasos { display: flex; flex-direction: column; gap: 0; }
+  .cf-paso {
+    display: flex; gap: 20px; padding: 22px 0;
+    border-bottom: 1px solid var(--borde);
+  }
+  .cf-paso:last-child { border-bottom: none; }
+  .cf-paso .cf-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: #fff;
+  }
+  .cf-paso h3 { font-family: 'Sora', sans-serif; font-size: 15.5px; margin: 0 0 6px; }
+  .cf-paso p { font-size: 13.5px; color: var(--texto-suave); margin: 0; line-height: 1.6; max-width: 560px; }
+
+  .cf-dosvias {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px; margin-top: 8px;
+  }
+  .cf-via { background: #fff; border: 1px solid var(--borde); border-radius: 14px; padding: 24px; }
+  .cf-via .cf-etiqueta {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.4px;
+    padding: 4px 10px; border-radius: 20px; margin-bottom: 14px;
+  }
+  .cf-via ul { margin: 0; padding-left: 18px; }
+  .cf-via li { font-size: 13.5px; color: var(--texto-suave); margin-bottom: 8px; line-height: 1.5; }
+
+  .cf-faq { margin-top: 8px; }
+  .cf-pregunta { padding: 16px 0; border-bottom: 1px solid var(--borde); }
+  .cf-pregunta:last-child { border-bottom: none; }
+  .cf-pregunta h3 { font-family: 'Sora', sans-serif; font-size: 14px; margin: 0 0 6px; }
+  .cf-pregunta p { font-size: 13px; color: var(--texto-suave); margin: 0; line-height: 1.6; }
+</style>
 </head>
 <body>
 
 <!-- ENCABEZADO -->
 <header class="header" id="header">
-    <div class="container header__inner">
+  <div class="container header__inner">
     <a href="index.html" class="logo">UNIMARKET</a>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
     <nav class="nav" id="nav">
-        <ul class="nav__list">
+      <ul class="nav__list">
         <li><a href="index.html">Explorar</a></li>
-          <li><a href="categorias.html">Categorías</a></li>
-          <li><a href="comofunciona.html">Cómo funciona</a></li>
-          <li><a href="quienessomos.html">Quiénes somos</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-        <button class="btn btn--outline" id="buyBtn">Publicar producto</button>
-        <button class="cart" id="cartBtn" aria-label="Mensajes">
+        <li><a href="categorias.html">Categorías</a></li>
+        <li><a href="comofunciona.html">Cómo funciona</a></li>
+        <li><a href="quienessomos.html">Quiénes somos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <button class="btn btn--outline" id="buyBtn">Publicar producto</button>
+      <button class="cart" id="cartBtn" aria-label="Mensajes">
         💬 <span class="cart__count" id="cartCount">0</span>
-        </button>
+      </button>
     </nav>
-    </div>
+  </div>
 </header>
 
 <main>
-    <!-- ENCABEZADO DE LA PÁGINA -->
-    <section class="hero hero--small">
+  <!-- ENCABEZADO DE LA PÁGINA -->
+  <section class="hero hero--small">
     <div class="container">
-        <h1 class="hero__title">¿Cómo funciona?</h1>
-        <p class="hero__text">
-        Conoce cómo funciona Unimarket y cómo puedes usar nuestra plataforma.
-        </p>
+      <h1>Así funciona UNIMARKET</h1>
+      <p>Cuatro pasos simples, pensados para que comprar y vender entre estudiantes sea rápido y confiable.</p>
     </div>
-    </section>
+  </section>
 
+  <section class="cf-bloque">
+    <h2>El paso a paso</h2>
+    <p class="cf-sub">Ya sea que quieras comprar algo o vender algo que ya no usas, el proceso es el mismo.</p>
 
+    <div class="cf-pasos">
+      <div class="cf-paso">
+        <div class="cf-num" style="background:var(--tinto);">1</div>
+        <div>
+          <h3>Regístrate con tu correo institucional</h3>
+          <p>Solo se aceptan correos <strong>@universitariadecolombia.edu.co</strong>. Te enviamos un código de verificación para confirmar que eres parte de la comunidad.</p>
+        </div>
+      </div>
+      <div class="cf-paso">
+        <div class="cf-num" style="background:var(--oro); color:#4A3600;">2</div>
+        <div>
+          <h3>Explora o publica un producto</h3>
+          <p>Busca por categoría (libros, tecnología, ropa, servicios) o publica lo tuyo en pocos minutos: título, precio, descripción y fotos.</p>
+        </div>
+      </div>
+      <div class="cf-paso">
+        <div class="cf-num" style="background:var(--azul);">3</div>
+        <div>
+          <h3>Negocia por el chat interno</h3>
+          <p>Escríbele directo al vendedor desde la plataforma. Toda la conversación queda guardada, sin salir a WhatsApp ni dar tu número si no quieres.</p>
+        </div>
+      </div>
+      <div class="cf-paso">
+        <div class="cf-num" style="background:#1E7A45;">4</div>
+        <div>
+          <h3>Acuerden un punto de encuentro seguro</h3>
+          <p>Reúnanse en un lugar público dentro del campus para revisar el producto y cerrar el trato en persona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cf-bloque">
+    <h2>Según lo que necesites</h2>
+    <div class="cf-dosvias">
+      <div class="cf-via">
+        <span class="cf-etiqueta" style="background:rgba(30,95,168,0.15); color:var(--azul);">SI QUIERES COMPRAR</span>
+        <ul>
+          <li>Filtra por categoría, precio o palabra clave</li>
+          <li>Revisa el perfil y las fotos antes de escribir</li>
+          <li>Pregunta lo que necesites por el chat</li>
+          <li>Encuéntrense en el campus para pagar y recibir</li>
+        </ul>
+      </div>
+      <div class="cf-via">
+        <span class="cf-etiqueta" style="background:rgba(200,38,42,0.15); color:var(--tinto);">SI QUIERES VENDER</span>
+        <ul>
+          <li>Publica con fotos claras y un precio justo</li>
+          <li>Marca el estado del producto (nuevo o usado)</li>
+          <li>Responde por el chat y acuerden el punto de entrega</li>
+          <li>Marca la publicación como "vendido" al cerrar el trato</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cf-bloque">
+    <h2>Preguntas frecuentes</h2>
+    <div class="cf-faq">
+      <div class="cf-pregunta">
+        <h3>¿Cualquier persona se puede registrar?</h3>
+        <p>No. Solo estudiantes con correo institucional activo de la Universitaria de Colombia.</p>
+      </div>
+      <div class="cf-pregunta">
+        <h3>¿UNIMARKET cobra alguna comisión?</h3>
+        <p>No, las transacciones se acuerdan directamente entre estudiantes. UNIMARKET solo facilita el contacto.</p>
+      </div>
+      <div class="cf-pregunta">
+        <h3>¿Qué hago si algo parece sospechoso?</h3>
+        <p>Usa el botón de reportar en la publicación o en el chat, y el equipo lo revisará.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="background:#171717; color:#C9C4B5; padding:30px clamp(20px,4vw,56px); text-align:center; font-size:12.5px;">
+  <div style="color:#fff; font-family:'Sora', sans-serif; font-weight:700; margin-bottom:6px;">UNIMARKET</div>
+  <div>Un proyecto estudiantil de la Universitaria de Colombia</div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
