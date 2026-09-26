@@ -69,8 +69,9 @@
           <li><a href="comofunciona.html">Cómo funciona</a></li>
           <li><a href="quienessomos.html">Quiénes somos</a></li>
           <li><a href="contacto.html" class="active">Contacto</a></li>
+        
         </ul>
-        <button class="btn btn--outline" id="buyBtn">Publicar producto</button>
+        <a href="publicar.html" class="btn btn--teal">Publicar productos</a>
         <button class="cart" id="cartBtn" aria-label="Mensajes">
         💬 <span class="cart__count" id="cartCount">0</span>
         </button>
@@ -135,6 +136,11 @@
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
   });
 </script>
+
+<footer style="background:#171717; color:#C9C4B5; padding:30px clamp(20px,4vw,56px); text-align:center; font-size:12.5px;">
+  <div style="color:#fff; font-family:'Sora', sans-serif; font-weight:700; margin-bottom:6px;">UNIMARKET</div>
+  <div>Un proyecto estudiantil de la Universitaria de Colombia</div>
+</footer>
 
 </body>
 </html>
