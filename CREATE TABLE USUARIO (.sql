@@ -6,3 +6,11 @@ CREATE TABLE USUARIO (
     CONSTRAINT chk_correo_institucional
         CHECK (CorreoInstitucional LIKE '%@universitariadecolombia.edu.co')
 );
+
+--PARTE TABLA ANDRES 
+CREATE TABLE CODIGO_VERIFICACION(CodigoId NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+UsuarioId INT NOT NULL, Codigomail VARCHAR(50) NOT NULL, Fecha_Expiracion DATE NOT NULL, Usado NUMBER (1) DEFAULT 0 NOT NULL,
+
+CONSTRAINT FK_CODIGO_VERIFICACION
+FOREIGN KEY (UsuarioId) REFERENCES USUARIO(UsuarioId));
+--///////////////////////////////////////////////////////////////////
