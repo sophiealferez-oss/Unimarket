@@ -13,4 +13,9 @@ UsuarioId INT NOT NULL, Codigomail VARCHAR(50) NOT NULL, Fecha_Expiracion DATE N
 
 CONSTRAINT FK_CODIGO_VERIFICACION
 FOREIGN KEY (UsuarioId) REFERENCES USUARIO(UsuarioId));
+
+--Parte Johan
+CREATE TABLE TIPOCATEGORIA(TipoCategoriaID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,NOMBRE VARCHAR2(100)  NOT NULL);
+
+
 --///////////////////////////////////////////////////////////////////
