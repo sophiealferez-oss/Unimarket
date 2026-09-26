@@ -22,7 +22,6 @@
           <li><a href="comofunciona.html">Cómo funciona</a></li>
           <li><a href="quienessomos.html">Quiénes somos</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          
         </ul>
         <a href="publicar.html" class="btn btn--teal">Publicar productos</a>
         <button class="cart" id="cartBtn" aria-label="Mensajes">
@@ -45,21 +44,26 @@
 
     <!-- GRID DE CATEGORÍAS -->
     <section class="features features--categorias container" id="categoriasGrid">
-      <!-- Las tarjetas se generan con script.js a partir de categorias.js -->
+      <!-- Las tarjetas se generan con categorias.js, contando los
+           productos reales guardados en productos-store.js -->
     </section>
   </main>
 
   <footer style="background:#171717; color:#C9C4B5; padding:30px clamp(20px,4vw,56px); text-align:center; font-size:12.5px;">
-  <div style="color:#fff; font-family:'Sora', sans-serif; font-weight:700; margin-bottom:6px;">UNIMARKET</div>
-  <div>Un proyecto estudiantil de la Universitaria de Colombia</div>
-</footer>
+    <div style="color:#fff; font-family:'Sora', sans-serif; font-weight:700; margin-bottom:6px;">UNIMARKET</div>
+    <div>Un proyecto estudiantil de la Universitaria de Colombia</div>
+  </footer>
 
-  <script src="script.js"></script>
+  <!-- productos-store.js va ANTES de categorias.js: categorias.js
+       necesita la función obtenerProductosPorCategoria() de ahí -->
+  <script src="producto-store.js"></script>
   <script src="categorias.js"></script>
-  <form id="formCategoria">
-  <input type="text" id="nombreCategoria" placeholder="Nombre de la categoría" required>
-  <button type="submit">Agregar categoría</button>
-</form>
-<p id="mensaje"></p>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
+    });
+  </script>
+
 </body>
 </html>
