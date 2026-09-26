@@ -24,3 +24,27 @@ categorias.forEach((cat) => {
   `;
   categoriasGrid.appendChild(tarjeta);
 });
+document.getElementById('formCategoria').addEventListener('submit', async (e) => {
+  e.preventDefault(); // evita que la página se recargue
+
+  const nombre = document.getElementById('nombreCategoria').value;
+
+  try {
+    const respuesta = await fetch('/api/tipocategoria', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre })
+    });
+
+    const data = await respuesta.json();
+
+    if (respuesta.ok) {
+      document.getElementById('mensaje').textContent = data.mensaje;
+      document.getElementById('formCategoria').reset();
+    } else {
+      document.getElementById('mensaje').textContent = 'Error: ' + data.error;
+    }
+  } catch (err) {
+    document.getElementById('mensaje').textContent = 'Error de conexión con el servidor';
+  }
+});
