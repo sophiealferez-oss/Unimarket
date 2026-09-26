@@ -3,45 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quiénes somos</title>
+<title>Quiénes somos — UNIMARKET</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+  :root {
+    --tinto: #C8262A;
+    --oro: #F2B90C;
+    --azul: #1E5FA8;
+    --borde: #E7E2D6;
+    --texto-suave: #5A5952;
+  }
+  .qs-bloque { padding: 56px clamp(20px, 4vw, 56px); max-width: 980px; margin: 0 auto; }
+  .qs-bloque + .qs-bloque { padding-top: 0; }
+  .qs-bloque h2 {
+    font-family: 'Sora', sans-serif; font-weight: 700; font-size: 24px;
+    margin: 0 0 18px; color: var(--tinto);
+  }
+  .qs-bloque p.qs-txt {
+    font-size: 14.5px; line-height: 1.75; color: var(--texto-suave); max-width: 760px; margin: 0;
+  }
+  .qs-bloque p.qs-txt + p.qs-txt { margin-top: 14px; }
+
+  .qs-valores {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px; margin-top: 24px;
+  }
+  .qs-valor { background: #fff; border: 1px solid var(--borde); border-radius: 14px; padding: 22px 20px; }
+  .qs-valor .qs-icono {
+    width: 40px; height: 40px; border-radius: 10px; display: flex;
+    align-items: center; justify-content: center; font-size: 18px; margin-bottom: 14px;
+  }
+  .qs-valor h3 { font-family: 'Sora', sans-serif; font-size: 15px; margin: 0 0 8px; }
+  .qs-valor p { font-size: 13px; color: var(--texto-suave); margin: 0; line-height: 1.5; }
+
+  .qs-equipo {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 18px; margin-top: 24px;
+  }
+  .qs-persona { text-align: center; }
+  .qs-persona .qs-avatar {
+    width: 66px; height: 66px; border-radius: 50%; margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: #fff;
+  }
+  .qs-persona h3 { font-family: 'Sora', sans-serif; font-size: 13.5px; margin: 0 0 3px; }
+  .qs-persona p { font-size: 11.5px; color: var(--texto-suave); margin: 0; }
+</style>
 </head>
 <body>
 
 <!-- ENCABEZADO -->
 <header class="header" id="header">
-    <div class="container header__inner">
+  <div class="container header__inner">
     <a href="index.html" class="logo">UNIMARKET</a>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
     <nav class="nav" id="nav">
-        <ul class="nav__list">
-     <li><a href="index.html">Explorar</a></li>
-          <li><a href="categorias.html">Categorías</a></li>
-          <li><a href="comofunciona.html">Cómo funciona</a></li>
-          <li><a href="quienessomos.html">Quiénes somos</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-        <button class="btn btn--outline" id="buyBtn">Publicar producto</button>
-        <button class="cart" id="cartBtn" aria-label="Mensajes">
+      <ul class="nav__list">
+        <li><a href="index.html">Explorar</a></li>
+        <li><a href="categorias.html">Categorías</a></li>
+        <li><a href="comofunciona.html">Cómo funciona</a></li>
+        <li><a href="quienessomos.html">Quiénes somos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <button class="btn btn--outline" id="buyBtn">Publicar producto</button>
+      <button class="cart" id="cartBtn" aria-label="Mensajes">
         💬 <span class="cart__count" id="cartCount">0</span>
-        </button>
+      </button>
     </nav>
-    </div>
+  </div>
 </header>
 
 <main>
-    <!-- ENCABEZADO DE LA PÁGINA -->
-    <section class="hero hero--small">
+  <!-- ENCABEZADO DE LA PÁGINA -->
+  <section class="hero hero--small">
     <div class="container">
-        <h1 class="hero__title">Descubre quienes somos</h1>
-        <p class="hero__text">
-        Andrés alias claude, Johhnatan cuadrado, esteban alias gemini
-        </p>
+      <h1>Descubre quiénes somos</h1>
+      <p>UNIMARKET nació como una iniciativa estudiantil de la Universitaria de Colombia, pensada por y para nuestra propia comunidad académica.</p>
     </div>
-    </section>
+  </section>
 
+  <section class="qs-bloque">
+    <h2>Nuestra historia</h2>
+    <p class="qs-txt">Todo empezó con un problema muy simple: comprar y vender entre estudiantes de la universidad estaba disperso en decenas de grupos de WhatsApp y publicaciones sueltas en Facebook, sin ningún control ni forma de saber si la otra persona era realmente de confianza.</p>
+    <p class="qs-txt">Como estudiantes de Ingeniería de Software, decidimos construir la solución que nosotros mismos necesitábamos: un espacio único, exclusivo para la comunidad de la Universitaria de Colombia, donde comprar una calculadora, vender un libro de texto o encontrar una tutoría fuera tan simple como seguro.</p>
+  </section>
 
+  <section class="qs-bloque">
+    <h2>Lo que nos importa</h2>
+    <div class="qs-valores">
+      <div class="qs-valor">
+        <div class="qs-icono" style="background:rgba(242,185,12,0.15); color:var(--oro);">🔒</div>
+        <h3>Seguridad primero</h3>
+        <p>Cada cuenta se verifica con el correo institucional, así que siempre sabés que estás negociando con otro estudiante real de la universidad.</p>
+      </div>
+      <div class="qs-valor">
+        <div class="qs-icono" style="background:rgba(30,95,168,0.15); color:var(--azul);">🤝</div>
+        <h3>Comunidad</h3>
+        <p>UNIMARKET es exclusivamente nuestro. No es un marketplace abierto a cualquiera: es de estudiantes, para estudiantes.</p>
+      </div>
+      <div class="qs-valor">
+        <div class="qs-icono" style="background:rgba(200,38,42,0.15); color:var(--tinto);">📍</div>
+        <h3>Encuentros seguros</h3>
+        <p>Fomentamos que cada intercambio se acuerde y se concrete dentro del campus, en puntos públicos y conocidos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="qs-bloque">
+    <h2>Nuestro equipo</h2>
+    <p class="qs-txt">Somos un grupo de estudiantes de Ingeniería de Software de la Universitaria de Colombia que diseñó y construyó UNIMARKET como proyecto propio, aplicando lo que vamos aprendiendo semestre a semestre.</p>
+    <div class="qs-equipo">
+      <div class="qs-persona">
+        <div class="qs-avatar" style="background:var(--tinto);">SA</div>
+        <h3>Johan Cuadros</h3>
+        <p>Desarrollo &amp; diseño</p>
+      </div>
+      <div class="qs-persona">
+        <div class="qs-avatar" style="background:var(--azul);">EC</div>
+        <h3>Esteban Camargo</h3>
+        <p>Desarrollo&amp; diseño</p>
+      </div>
+      <div class="qs-persona">
+        <div class="qs-avatar" style="background:var(--oro); color:#4A3600;">AP</div>
+        <h3>Andrés Peña</h3>
+        <p>Desarrollo &amp; diseño</p>
+      </div>
+      <div class="qs-persona">
+        <div class="qs-avatar" style="background:#7F77DD;">JC</div>
+        <h3>Shirley Álvarez</h3>
+        <p>Desarrollo &amp; diseño</p>
+      </div>
+      
+    </div>
+  </section>
+</main>
+
+<footer style="background:#171717; color:#C9C4B5; padding:30px clamp(20px,4vw,56px); text-align:center; font-size:12.5px;">
+  <div style="color:#fff; font-family:'Sora', sans-serif; font-weight:700; margin-bottom:6px;">UNIMARKET</div>
+  <div>Un proyecto estudiantil de la Universitaria de Colombia</div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
