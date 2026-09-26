@@ -6,8 +6,6 @@
 <title>Publicar producto</title>
 <link rel="stylesheet" href="styles.css">
 
-<!-- Mismos estilos de formulario que usamos en contacto.html,
-     más los específicos de esta página (select, file, precio, condición) -->
 <style>
   .contact-form {
     text-align: left;
@@ -171,20 +169,10 @@
             <label for="category" class="form-group__label">Categoría <span>(requerido)</span></label>
             <select id="category" class="form-group__select" required>
               <option value="" disabled selected>Selecciona una categoría</option>
-<<<<<<< HEAD
-              <option value="electronica">Libros</option>
-              <option value="libros">Tecnología</option>
-              <option value="ropa">Ropa</option>
-              <option value="hogar">Servicios</option>
-              
-=======
-              <option value="electronica">Electrónica</option>
-              <option value="libros">Libros y apuntes</option>
-              <option value="ropa">Ropa y accesorios</option>
-              <option value="hogar">Hogar y dormitorio</option>
-              <option value="deportes">Deportes</option>
-              <option value="otros">Otros</option>
->>>>>>> origin/Johan
+              <option value="Libros">Libros</option>
+              <option value="Tecnología">Tecnología</option>
+              <option value="Ropa">Ropa</option>
+              <option value="Servicios">Servicios</option>
             </select>
           </div>
 
@@ -224,6 +212,19 @@
             </label>
           </div>
 
+          <div class="form-group">
+            <label for="sellerEmail" class="form-group__label">Tu correo institucional <span>(requerido)</span></label>
+            <input
+              type="email"
+              id="sellerEmail"
+              class="form-group__input"
+              placeholder="tunombre@universitariadecolombia.edu.co"
+              pattern=".+@universitariadecolombia\.edu\.co$"
+              title="Debe ser un correo @universitariadecolombia.edu.co"
+              required
+            >
+          </div>
+
           <button type="submit" class="btn btn--teal">Publicar producto</button>
         </form>
       </div>
@@ -231,19 +232,62 @@
 
 </main>
 
+<!-- producto-store.js va ANTES del script de esta página, porque
+     este archivo usa las funciones que ahí se definen. -->
+<script src="producto-store.js"></script>
 <script>
-  document.getElementById('publishForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    alert('¡Tu producto fue publicado! Ya está visible para otros estudiantes.');
-    this.reset();
-    document.getElementById('fileName').textContent = '';
-  });
-
   document.getElementById('photos').addEventListener('change', function () {
     const nombre = this.files.length === 1
       ? this.files[0].name
       : `${this.files.length} archivos seleccionados`;
     document.getElementById('fileName').textContent = this.files.length ? nombre : '';
+  });
+
+  // Convierte el archivo de imagen elegido a un dataURL (texto),
+  // que es la única forma de "guardar una imagen" en localStorage.
+  // NOTA: esto es temporal — cuando exista el backend con Oracle,
+  // las fotos se deben subir a un servidor/almacenamiento real
+  // (guardando solo la URL en la columna Imagen), no como dataURL.
+  function leerPrimeraFotoComoDataURL(inputFile) {
+    return new Promise((resolve) => {
+      const archivo = inputFile.files[0];
+      if (!archivo) return resolve("");
+      const lector = new FileReader();
+      lector.onload = () => resolve(lector.result);
+      lector.readAsDataURL(archivo);
+    });
+  }
+
+  document.getElementById('publishForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const correoVendedor = document.getElementById('sellerEmail').value.trim().toLowerCase();
+    const dominioValido = "@universitariadecolombia.edu.co";
+
+    // Segunda validación en JS (no solo el pattern del input), por si
+    // alguien manipula el HTML o el navegador no soporta bien pattern.
+    if (!correoVendedor.endsWith(dominioValido)) {
+      alert(`Solo se puede publicar con un correo ${dominioValido}`);
+      return;
+    }
+
+    const categoria = document.getElementById('category').value;
+    const imagenDataUrl = await leerPrimeraFotoComoDataURL(document.getElementById('photos'));
+
+    guardarProducto({
+      nombre: document.getElementById('title').value,
+      categoria: categoria,
+      precio: document.getElementById('price').value,
+      estado: document.getElementById('condition').value,
+      descripcion: document.getElementById('description').value,
+      imagen: imagenDataUrl,
+      correoVendedor: correoVendedor,
+    });
+
+    alert('¡Tu producto fue publicado! Ya está visible en su categoría.');
+
+    // Redirige a la página de esa categoría para que vea su producto ya guardado
+    window.location.href = `productos.html?categoria=${encodeURIComponent(categoria)}`;
   });
 
   document.getElementById('menuToggle').addEventListener('click', function () {
@@ -253,11 +297,7 @@
   window.addEventListener('scroll', function () {
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
   });
-
-
-
 </script>
-
 
 <footer style="background:#171717; color:#C9C4B5; padding:30px clamp(20px,4vw,56px); text-align:center; font-size:12.5px;">
   <div style="color:#fff; font-family:'Sora', sans-serif; font-weight:700; margin-bottom:6px;">UNIMARKET</div>
