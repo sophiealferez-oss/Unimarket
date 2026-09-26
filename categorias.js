@@ -6,8 +6,6 @@ const categorias = [
     descripcion: "Calculadoras, portátiles, audífonos, cargadores" },
   { icono: "👕", nombre: "Ropa", cantidad: 15,
     descripcion: "Batas de laboratorio, uniformes, chaquetas de universidad" },
-  { icono: "🛏️", nombre: "Dormitorio", cantidad: 12,
-    descripcion: "Organizadores, ropa de cama, lámparas de estudio" },
   { icono: "🎓", nombre: "Servicios", cantidad: 9,
     descripcion: "Tutorías, diseño gráfico, impresión de trabajos" }
 ];
