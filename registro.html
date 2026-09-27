@@ -178,21 +178,13 @@
             <p class="reenviar"><a id="regenerarCodigo">Generar otro código</a></p>
           </div>
 
-          <button type="submit" class="btn btn--teal">Crear cuenta</button>
+          <button type="submit" class="btn btn--teal">Registrarse</button>
         </form>
       </div>
     </div>
 </main>
 
 <script>
-  // ============================================================
-  // Genera un código de 6 dígitos y lo muestra en pantalla. El
-  // usuario debe volver a escribirlo para confirmar (como un
-  // captcha) — esto NO verifica que el correo sea real ni le
-  // pertenezca a la persona, solo confirma que prestó atención.
-  // Cuando exista el backend, esto se puede reemplazar por la
-  // verificación real enviada al correo.
-  // ============================================================
 
   const CLAVE_USUARIOS = "unimarket_usuarios";
   let codigoActual = "";
@@ -209,7 +201,7 @@
       id: Date.now(),
       nombre,
       correoInstitucional: correo,
-      correoVerificado: false, // false porque esto no confirma el correo real todavía
+      correoVerificado: false, 
     });
     localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(usuarios));
   }
