@@ -50,9 +50,41 @@
   /* Input de código, grande y espaciado */
   .codigo-input {
     text-align: center;
-    font-size: 28px;
+    font-size: 22px;
+    letter-spacing: 8px;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+
+  /* El código que la página genera y muestra */
+  .codigo-mostrado {
+    text-align: center;
+    font-size: 32px;
     letter-spacing: 10px;
     font-weight: 700;
+    color: var(--teal);
+    background: var(--card-bg);
+    border-radius: 6px;
+    padding: 14px;
+    user-select: all;
+  }
+
+  .codigo-ayuda {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .reenviar {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .reenviar a {
+    color: var(--teal);
+    font-weight: 700;
+    cursor: pointer;
   }
 
   .login-link {
@@ -83,7 +115,7 @@
           <li><a href="comofunciona.html">Cómo funciona</a></li>
           <li><a href="quienessomos.html">Quiénes somos</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="registro.html">Regístrate</a></li>
+          <li><a href="registro.html" class="active">Regístrate</a></li>
         </ul>
         <a href="publicar.html" class="btn btn--teal">Publicar productos</a>
         <button class="cart" id="cartBtn" aria-label="Mensajes">
@@ -130,28 +162,85 @@
           </div>
 
           <div class="form-group">
-            <label for="codigo" class="form-group__label">Código de verificación <span>(requerido)</span></label>
+            <label class="form-group__label">Código de verificación <span>(requerido)</span></label>
+            <div id="codigoGenerado" class="codigo-mostrado">000000</div>
+            <p class="codigo-ayuda">Escribe el código de arriba para confirmar que eres tú.</p>
             <input
               type="text"
               id="codigo"
               class="form-group__input codigo-input"
-              placeholder="000000"
+              placeholder="Escribe el código"
               maxlength="6"
               inputmode="numeric"
               pattern="[0-9]{6}"
               required
             >
+            <p class="reenviar"><a id="regenerarCodigo">Generar otro código</a></p>
           </div>
 
           <button type="submit" class="btn btn--teal">Crear cuenta</button>
         </form>
-
-        <p class="login-link">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
       </div>
     </div>
 </main>
 
 <script>
+  // ============================================================
+  // Genera un código de 6 dígitos y lo muestra en pantalla. El
+  // usuario debe volver a escribirlo para confirmar (como un
+  // captcha) — esto NO verifica que el correo sea real ni le
+  // pertenezca a la persona, solo confirma que prestó atención.
+  // Cuando exista el backend, esto se puede reemplazar por la
+  // verificación real enviada al correo.
+  // ============================================================
+
+  const CLAVE_USUARIOS = "unimarket_usuarios";
+  let codigoActual = "";
+
+  function generarYMostrarCodigo() {
+    codigoActual = String(Math.floor(100000 + Math.random() * 900000));
+    document.getElementById("codigoGenerado").textContent = codigoActual;
+    document.getElementById("codigo").value = "";
+  }
+
+  function guardarUsuario(nombre, correo) {
+    const usuarios = JSON.parse(localStorage.getItem(CLAVE_USUARIOS) || "[]");
+    usuarios.push({
+      id: Date.now(),
+      nombre,
+      correoInstitucional: correo,
+      correoVerificado: false, // false porque esto no confirma el correo real todavía
+    });
+    localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(usuarios));
+  }
+
+  generarYMostrarCodigo();
+
+  document.getElementById("regenerarCodigo").addEventListener("click", generarYMostrarCodigo);
+
+  document.getElementById("formRegistro").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const correo = document.getElementById("correo").value.trim().toLowerCase();
+    const codigoEscrito = document.getElementById("codigo").value.trim();
+
+    if (!correo.endsWith("@universitariadecolombia.edu.co")) {
+      alert("Solo se puede registrar con un correo @universitariadecolombia.edu.co");
+      return;
+    }
+
+    if (codigoEscrito !== codigoActual) {
+      alert("El código no coincide. Vuelve a escribirlo tal como aparece arriba.");
+      generarYMostrarCodigo();
+      return;
+    }
+
+    guardarUsuario(nombre, correo);
+    alert("¡Cuenta creada! Ya puedes publicar y comprar en UniMarket.");
+    window.location.href = "index.html";
+  });
+
   document.getElementById('menuToggle').addEventListener('click', function () {
     document.getElementById('nav').classList.toggle('open');
   });
