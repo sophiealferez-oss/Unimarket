@@ -234,84 +234,8 @@
 </main>
 
 <script src="producto-store.js"></script>
-<script>
-  document.getElementById('photos').addEventListener('change', function () {
-    const nombre = this.files.length === 1
-      ? this.files[0].name
-      : `${this.files.length} archivos seleccionados`;
-    document.getElementById('fileName').textContent = this.files.length ? nombre : '';
-  });
+<script src="publicar.js"></script>
 
-  // Convierte el archivo de imagen elegido a un dataURL (texto),
-  // que es la única forma de "guardar una imagen" en localStorage.
-  // NOTA: esto es temporal — cuando exista el backend con Oracle,
-  // las fotos se deben subir a un servidor/almacenamiento real
-  // (guardando solo la URL en la columna Imagen), no como dataURL.
-  function leerPrimeraFotoComoDataURL(inputFile) {
-    return new Promise((resolve) => {
-      const archivo = inputFile.files[0];
-      if (!archivo) return resolve("");
-      const lector = new FileReader();
-      lector.onload = () => resolve(lector.result);
-      lector.readAsDataURL(archivo);
-    });
-  }
-
-  const CLAVE_USUARIOS = "unimarket_usuarios";
-
-  function correoEstaRegistrado(correo) {
-    const usuarios = JSON.parse(localStorage.getItem(CLAVE_USUARIOS) || "[]");
-    return usuarios.some((u) => u.correoInstitucional === correo);
-  }
-
-  document.getElementById('publishForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const correoVendedor = document.getElementById('sellerEmail').value.trim().toLowerCase();
-    const dominioValido = "@universitariadecolombia.edu.co";
-
-    // Segunda validación en JS (no solo el pattern del input), por si
-    // alguien manipula el HTML o el navegador no soporta bien pattern.
-    if (!correoVendedor.endsWith(dominioValido)) {
-      alert(`Solo se puede publicar con un correo ${dominioValido}`);
-      return;
-    }
-
-    // No basta con que el correo tenga el formato correcto: tiene que
-    // existir de verdad como una cuenta creada en registro.html.
-    if (!correoEstaRegistrado(correoVendedor)) {
-      alert("Ese correo no está registrado todavía. Primero regístrese.");
-      window.location.href = "registro.html";
-      return;
-    }
-
-    const categoria = document.getElementById('category').value;
-    const imagenDataUrl = await leerPrimeraFotoComoDataURL(document.getElementById('photos'));
-
-    guardarProducto({
-      nombre: document.getElementById('title').value,
-      categoria: categoria,
-      precio: document.getElementById('price').value,
-      estado: document.getElementById('condition').value,
-      descripcion: document.getElementById('description').value,
-      imagen: imagenDataUrl,
-      correoVendedor: correoVendedor,
-    });
-
-    alert('¡Tu producto fue publicado! Ya está visible en su categoría.');
-
-   
-    window.location.href = `productos.html?categoria=${encodeURIComponent(categoria)}`;
-  });
-
-  document.getElementById('menuToggle').addEventListener('click', function () {
-    document.getElementById('nav').classList.toggle('open');
-  });
-
-  window.addEventListener('scroll', function () {
-    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
-  });
-</script>
 
 <footer style="background:#171717; color:#C9C4B5; padding:30px clamp(20px,4vw,56px); text-align:center; font-size:12.5px;">
   <div style="color:#fff; font-family:'Sora', sans-serif; font-weight:700; margin-bottom:6px;">UNIMARKET</div>
