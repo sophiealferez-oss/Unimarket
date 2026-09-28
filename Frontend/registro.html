@@ -184,63 +184,8 @@
     </div>
 </main>
 
-<script>
+<script src="registro.js"></script>
 
-  const CLAVE_USUARIOS = "unimarket_usuarios";
-  let codigoActual = "";
-
-  function generarYMostrarCodigo() {
-    codigoActual = String(Math.floor(100000 + Math.random() * 900000));
-    document.getElementById("codigoGenerado").textContent = codigoActual;
-    document.getElementById("codigo").value = "";
-  }
-
-  function guardarUsuario(nombre, correo) {
-    const usuarios = JSON.parse(localStorage.getItem(CLAVE_USUARIOS) || "[]");
-    usuarios.push({
-      id: Date.now(),
-      nombre,
-      correoInstitucional: correo,
-      correoVerificado: false, 
-    });
-    localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(usuarios));
-  }
-
-  generarYMostrarCodigo();
-
-  document.getElementById("regenerarCodigo").addEventListener("click", generarYMostrarCodigo);
-
-  document.getElementById("formRegistro").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const nombre = document.getElementById("nombre").value.trim();
-    const correo = document.getElementById("correo").value.trim().toLowerCase();
-    const codigoEscrito = document.getElementById("codigo").value.trim();
-
-    if (!correo.endsWith("@universitariadecolombia.edu.co")) {
-      alert("Solo se puede registrar con un correo @universitariadecolombia.edu.co");
-      return;
-    }
-
-    if (codigoEscrito !== codigoActual) {
-      alert("El código no coincide. Vuelve a escribirlo tal como aparece arriba.");
-      generarYMostrarCodigo();
-      return;
-    }
-
-    guardarUsuario(nombre, correo);
-    alert("¡Cuenta creada! Ya puedes publicar y comprar en UniMarket.");
-    window.location.href = "index.html";
-  });
-
-  document.getElementById('menuToggle').addEventListener('click', function () {
-    document.getElementById('nav').classList.toggle('open');
-  });
-
-  window.addEventListener('scroll', function () {
-    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
-  });
-</script>
 
 <footer style="background:#171717; color:#C9C4B5; padding:30px clamp(20px,4vw,56px); text-align:center; font-size:12.5px;">
   <div style="color:#fff; font-family:'Sora', sans-serif; font-weight:700; margin-bottom:6px;">UNIMARKET</div>
