@@ -30,3 +30,24 @@ categorias.forEach((cat) => {
   `;
   categoriasGrid.appendChild(tarjeta);
 });
+
+async function probarBackend() {
+    try {
+        const respuesta = await fetch('/api/TipoCategoria', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: 'Prueba Backend'
+            })
+        });
+
+        const datos = await respuesta.json();
+
+        console.log(datos);
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
