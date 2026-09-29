@@ -16,7 +16,6 @@ FOREIGN KEY (UsuarioId) REFERENCES USUARIO(UsuarioId));
 
 
 ---shirley
-
 CREATE TABLE PRODUCTO (
     ProductoId          NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     VendedorId          NUMBER NOT NULL,
